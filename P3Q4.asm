@@ -1,0 +1,22 @@
+INCLUDE Irvine32.inc
+
+.DATA
+DATA1 DWORD 2,5000,6000,150000,2500,150
+
+.CODE
+MAIN PROC
+	MOV ESI, 0				; index register
+	MOV ECX, LENGTHOF DATA1	; loop counter
+	MOV EAX, 0				; initial total number
+
+L1:
+	ADD EAX, DATA1[ESI]
+	ADD ESI, TYPE DATA1
+	LOOP L1
+	
+	CALL WRITEDEC
+	CALL CRLF
+
+	EXIT
+MAIN ENDP
+END MAIN
